@@ -21,7 +21,7 @@ const _getPollSubtitle = (poll) => (
 const _getTotalCount = (choices) => (
   choices
     .map(choice => choice.count)
-    .reduce((prev, choiceCount) => (prev + choiceCount))
+    .reduce((prev, choiceCount) => (prev + choiceCount), 0)
 )
 
 const _getPollChoices = (choices) => {

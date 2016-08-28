@@ -1,5 +1,12 @@
 import { req } from '../../../utils'
 
+import {
+  getBusiness,
+  GET_BUSINESS_REQUEST,
+  GET_BUSINESS_SUCCESS,
+  GET_BUSINESS_FAILURE
+} from '../../Business/modules/business'
+
 export const ADD_NEW_TARGET = 'ADD_NEW_TARGET'
 
 export const CREATE_LURE_REQUEST = 'CREATE_LURE_REQUEST'
@@ -36,6 +43,7 @@ const createLure = ({
         dispatch(createLureSuccess(res.data.lure))
       })
       .catch(err => {
+        console.error(err);
         dispatch(createLureFailure())
       })
   }
@@ -43,13 +51,15 @@ const createLure = ({
 
 export const actionCreators = {
   addNewTarget,
-  createLure
+  createLure,
+  getBusiness,
 }
 
 const initialState = {
   isLoading: false,
   numTargets: 1,
-  lure: {}
+  lure: {},
+  business: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -74,6 +84,23 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isLoading: false
+      }
+    case GET_BUSINESS_REQUEST:
+      return {
+        ...state,
+        isLoading: true
+      }
+    case GET_BUSINESS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        business: action.payload.business
+      }
+    case GET_BUSINESS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: true
       }
     default:
       return state

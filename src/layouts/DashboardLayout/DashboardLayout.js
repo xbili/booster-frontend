@@ -11,10 +11,11 @@ import Sidebar from './components/Sidebar'
 export const DashboardLayout = ({
   title,
   business,
+  rightButton,
   children
 }) => (
   <Grid className="main" fluid={true}>
-    <Navbar title={title} style={{ position: 'fixed' }}/>
+    <Navbar title={title} rightButton={rightButton} />
     <Row>
       <Sidebar business={business} />
       <Col

@@ -39,6 +39,7 @@ export class LuresView extends Component {
         <DashboardLayout
           title='Active Campaigns'
           business={business}
+          rightButton={`/business/${business.id}/lure`}
         >
           <Row style={{
             paddingTop: '30px',

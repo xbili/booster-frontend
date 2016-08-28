@@ -5,7 +5,8 @@ import { actionCreators } from '../modules/createLure'
 import CreateLureView from '../components/CreateLureView'
 
 const mapStateToProps = state => ({
-  numTargets: state.createLure.numTargets
+  numTargets: state.createLure.numTargets,
+  business: state.createLure.business
 })
 
 const mapDispatchToProps = dispatch => ({

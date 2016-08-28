@@ -19,7 +19,7 @@ const _getLureDate = lure => (
 const _getTotalTargets = targets => (
   targets
     .map(target => target.amount)
-    .reduce((prev, amount) => (prev + amount))
+    .reduce((prev, amount) => (prev + amount), 0)
 )
 
 export const LureCard = ({ business, lure }) => (

@@ -3,11 +3,23 @@ import { Link } from 'react-router'
 import RaisedButton from 'material-ui/RaisedButton'
 
 import LoginRedirect from '../../../containers/LoginRedirect'
+import DashboardLayout from '../../../layouts/DashboardLayout/DashboardLayout'
 import CreateLureFormContainer from '../containers/CreateLureFormContainer'
 
 export class CreateLureView extends Component {
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
+
+  componentDidMount() {
+    const { getBusiness } = this.props.actions
+    const { businessId } = this.props.params
+
+    getBusiness(businessId)
+  }
+
   render() {
-    const { numTargets } = this.props
+    const { numTargets, business } = this.props
     const { addNewTarget } = this.props.actions
     const formProps = {
       onSubmit: this._handleSubmit.bind(this),
@@ -17,14 +29,18 @@ export class CreateLureView extends Component {
 
     return (
       <LoginRedirect>
-        <h1>What's up, Redux?</h1>
-        <p>CreateLureView represent</p>
-        <CreateLureFormContainer {...formProps}/>
+        <DashboardLayout
+          title='Create New Campaign'
+          business={business}
+        >
+          <CreateLureFormContainer {...formProps} />
+        </DashboardLayout>
       </LoginRedirect>
     );
   }
 
   _handleSubmit(values) {
+    const { business } = this.props
     const { createLure } = this.props.actions
     const {
       title,
@@ -55,6 +71,7 @@ export class CreateLureView extends Component {
     }
 
     createLure({...createLureParams})
+    this.context.router.push(`/business/${business.id}/lures`)
   }
 }
 
