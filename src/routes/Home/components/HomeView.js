@@ -57,25 +57,25 @@ export class HomeView extends Component {
             <Row style={{textAlign: 'center', marginTop: '40px', marginBottom: '36px'}}>
               <Col xs={2}>
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#17B3DD', color: '#FFFFFF', borderRadius: '5px', minHeight: '130px'}}>
-                  <div style={{fontSize: '3em', fontWeight: 'bold'}}>5</div>
+                  <div style={{fontSize: '3em', fontWeight: 'bold', letterSpacing: '2px'}}>5</div>
                   <div style={{fontSize: '0.9em'}}>ongoing campaigns</div>
                 </div>
               </Col>
               <Col xs={2}>
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#FF4A5D', color: '#FFFFFF', borderRadius: '5px', minHeight: '130px'}}>
-                  <div style={{fontSize: '3em', fontWeight: 'bold'}}>300</div>
+                  <div style={{fontSize: '3em', fontWeight: 'bold', letterSpacing: '2px'}}>300</div>
                   <div style={{fontSize: '0.9em'}}>purchases</div>
                 </div>
               </Col>
               <Col xs={2}>
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#1BBC9B', color: '#FFFFFF', borderRadius: '5px', minHeight: '130px'}}>
-                  <div style={{fontSize: '3em', fontWeight: 'bold'}}>2</div>
+                  <div style={{fontSize: '3em', fontWeight: 'bold', letterSpacing: '2px'}}>2</div>
                   <div style={{fontSize: '0.9em'}}>ongoing polls</div>
                 </div>
               </Col>
               <Col xs={2}>
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#764EBE', color: '#FFFFFF', borderRadius: '5px', minHeight: '130px'}}>
-                  <div style={{fontSize: '3em', fontWeight: 'bold'}}>71</div>
+                  <div style={{fontSize: '3em', fontWeight: 'bold', letterSpacing: '2px'}}>71</div>
                   <div style={{fontSize: '0.9em'}}>poll respondents</div>
                 </div>
               </Col>
