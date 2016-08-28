@@ -4,24 +4,12 @@ import {
   CircularProgress
 } from 'material-ui'
 import {
-  Grid,
   Row,
   Col
 } from 'react-bootstrap'
-import { Link } from 'react-router'
 import moment from 'moment'
 
 import './LureCard.scss'
-
-const _getLureDate = lure => (
-  `${moment(lure.start_date).format('MMMM Do YYYY')} to ${moment(lure.end_date).format('MMMM Do YYYY')}`
-)
-
-const _getTotalTargets = targets => (
-  targets
-    .map(target => target.amount)
-    .reduce((prev, amount) => (prev + amount), 0)
-)
 
 const _getTotalPurchased = transactions => (
   transactions

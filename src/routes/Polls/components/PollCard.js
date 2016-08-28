@@ -1,18 +1,14 @@
 import React from 'react'
+import { Paper } from 'material-ui'
 import {
-  Card,
-  CardHeader,
-  CardActions,
-  CardMedia,
-  CardTitle,
-  CardText
-} from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton'
-import { Link } from 'react-router'
+  Row,
+  Col
+} from 'react-bootstrap'
 import uuid from 'uuid'
 import moment from 'moment'
 
 import PollChoice from './PollChoice'
+import './PollCard.scss'
 
 const _getPollSubtitle = (poll) => (
   `${moment(poll.start_date).format('MMMM Do YYYY')} to ${moment(poll.end_date).format('MMMM Do YYYY')}`
@@ -25,31 +21,28 @@ const _getTotalCount = (choices) => (
 )
 
 const _getPollChoices = (choices) => {
+  const totalCount = _getTotalCount(choices)
   return choices.map(choice => (
-      <PollChoice
-        key={uuid.v4()}
-        title={choice.title}
-        count={choice.count}
-        totalCount={_getTotalCount(choices)}
-      />
+      <div key={uuid.v4()} className="choice">
+        <PollChoice
+          title={choice.title}
+          count={choice.count}
+          totalCount={totalCount}
+        />
+      </div>
     )
   )
 }
 
 export const PollCard = ({ business, poll }) => (
-  <Card style={{ minheight: '80vh' }}>
-    <CardHeader
-      title={poll.title}
-      subtitle={_getPollSubtitle(poll)}
-    />
-    <CardText>
-      {_getPollChoices(poll.choices)}
-    </CardText>
-    <CardActions>
-      <Link to='/'><FlatButton label='View Poll' /></Link>
-    </CardActions>
-  </Card>
+  <Paper style={{borderRadius: '5px', marginBottom: '36px'}}>
+    <Row>
+      <Col xs={12}>
+        <div className="cardTitle">{poll.title}</div>
+        {_getPollChoices(poll.choices)}
+      </Col>
+    </Row>
+  </Paper>
 )
 
 export default PollCard
-

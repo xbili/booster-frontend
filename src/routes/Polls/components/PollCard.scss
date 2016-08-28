@@ -1,0 +1,21 @@
+@import '../../../styles/_base.scss';
+
+.cardTitle {
+  align-items: center;
+  background-color: $color-dark-blue;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+  display: flex;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 36px;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+.choice {
+  margin: 16px;
+}

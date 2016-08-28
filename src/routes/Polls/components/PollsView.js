@@ -22,13 +22,7 @@ export class PollsView extends Component {
   render() {
     const { polls, business } = this.props;
     const pollCards = polls.map(poll => (
-      <Col
-        style={{ marginBottom: '15px' }}
-        xs={12}
-        key={uuid.v4()}
-      >
-        <PollCard business={business} poll={poll} />
-      </Col>
+      <PollCard key={uuid.v4()} business={business} poll={poll} />
     ))
     return (
       <LoginRedirect>
@@ -41,7 +35,12 @@ export class PollsView extends Component {
             paddingTop: '30px',
             paddingBottom: '30px'
           }}>
-            {pollCards}
+            <Col
+              style={{ marginBottom: '80px', marginTop: '32px', marginLeft: '48px' }}
+              xs={8}
+            >
+              {pollCards}
+            </Col>
           </Row>
         </DashboardLayout>
       </LoginRedirect>
@@ -50,4 +49,3 @@ export class PollsView extends Component {
 }
 
 export default PollsView
-
