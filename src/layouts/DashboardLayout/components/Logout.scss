@@ -1,0 +1,21 @@
+@import '../../../styles/base';
+
+.sidebar__logout {
+  a {
+    border-radius: 15px;
+    background-color: $color-red;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    opacity: 1;
+    letter-spacing: 1px;
+    transition: opacity 0.25s ease-in-out;
+    &:hover {
+      text-decoration: none;
+      opacity: 0.8;
+    }
+  }
+}

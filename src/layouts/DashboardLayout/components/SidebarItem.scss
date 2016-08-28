@@ -1,0 +1,34 @@
+@import '../../../styles/base';
+
+.sidebar__item {
+  display: flex;
+  align-items: middle;
+  .fa {
+    font-size: 1.35em;
+    margin-right: 15px;
+  }
+  a {
+    color: $color-grey-dark;
+    font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+    font-size: 0.85em;
+    display: block;
+    padding-left: 45px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.25s ease-in-out;
+    &.active {
+      color: $color-primary;
+    }
+  }
+
+  &:hover {
+    a {
+      color: $color-primary;
+    }
+  }
+}
