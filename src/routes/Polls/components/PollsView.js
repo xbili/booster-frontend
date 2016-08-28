@@ -15,8 +15,11 @@ export class PollsView extends Component {
     const { getPolls, getBusiness } = this.props.actions
     const { businessId } = this.props.params
 
+
+    if (this.props.polls.length === 0) {
+      getPolls(businessId)
+    }
     getBusiness(businessId)
-    getPolls(businessId)
   }
 
   render() {

@@ -15,8 +15,10 @@ export class LuresView extends Component {
     const { getLures, getBusiness } = this.props.actions
     const businessId = localStorage.getItem('businessId')
 
+    if (this.props.lures.length === 0) {
+      getLures(businessId)
+    }
     getBusiness(businessId)
-    getLures(businessId)
   }
 
   render() {

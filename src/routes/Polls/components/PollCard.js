@@ -30,7 +30,8 @@ const _getPollChoices = (choices) => {
           totalCount={totalCount}
         />
       </div>
-    )
+    ),
+    ''
   )
 }
 

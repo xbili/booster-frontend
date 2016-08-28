@@ -6,6 +6,9 @@ import {
   GET_BUSINESS_SUCCESS,
   GET_BUSINESS_FAILURE
 } from '../../Business/modules/business'
+import {
+  CREATE_LURE_SUCCESS
+} from '../../CreateLure/modules/createLure'
 
 
 export const GET_LURES_REQUEST = 'GET_LURES_REQUEST'
@@ -83,6 +86,12 @@ export default function reducer(state = initialState, action) {
         ...state,
         isLoading: false,
         error: true
+      }
+    case CREATE_LURE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        lures: [action.payload.lure, ...state.lures]
       }
     default:
       return state

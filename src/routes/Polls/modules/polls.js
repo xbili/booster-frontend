@@ -1,11 +1,13 @@
 import { req } from '../../../utils'
-
 import {
   getBusiness,
   GET_BUSINESS_REQUEST,
   GET_BUSINESS_SUCCESS,
   GET_BUSINESS_FAILURE
 } from '../../Business/modules/business'
+import {
+  CREATE_POLL_SUCCESS
+} from '../../CreatePoll/modules/createPoll'
 
 export const GET_POLLS_REQUEST = 'GET_POLLS_REQUEST'
 export const GET_POLLS_SUCCESS = 'GET_POLLS_SUCCESS'
@@ -80,6 +82,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         isLoading: false,
         error: true
+      }
+    case CREATE_POLL_SUCCESS:
+      return {
+        ...state,
+        polls: [action.payload.poll, ...state.polls]
       }
     default:
       return state
