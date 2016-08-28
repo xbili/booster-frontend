@@ -5,6 +5,10 @@ import {
   SelectField,
   DatePicker
 } from 'redux-form-material-ui'
+import {
+  Row,
+  Col
+} from 'react-bootstrap'
 import RaisedButton from 'material-ui/RaisedButton'
 import MenuItem from 'material-ui/MenuItem'
 import uuid from 'uuid'
@@ -29,9 +33,11 @@ const _renderTargetInputs = (numTargets) => {
   let targetInputs = []
   for (let i = 0; i < numTargets; i++) {
     const targetInput = (
-      <Field name={`target${i}`} component={SelectField} key={uuid.v4()}>
-        {_renderTargetItems()}
-      </Field>
+      <Col xs={12} key={uuid.v4()}>
+        <Field name={`target${i}`} component={SelectField} hintText='Target Amount'>
+          {_renderTargetItems()}
+        </Field>
+      </Col>
     )
     targetInputs.push(targetInput)
   }
@@ -53,15 +59,42 @@ export const CreateLureForm = ({
   numTargets
 }) => (
   <form onSubmit={handleSubmit}>
-    <Field name='title' component={TextField} hintText='Title' />
-    <Field name='description' component={TextField} hintText='Description' />
-    <Field name='location' component={TextField} hintText='Location' />
-    <Field name='startDate' component={DatePicker} defaultValue={null} hintText='Start Date' />
-    <Field name='endDate' component={DatePicker} defaultValue={null} hintText='End Date' />
-    {_renderTargetInputs(numTargets)}
-    <RaisedButton label='Add Target' onClick={addTargetInput}/>
-
-    <RaisedButton type='submit' label='Create Campaign' />
+    <Col xs={8} style={{ paddingTop: '15px' }}>
+      <Row style={{ marginBottom: '15px' }}>
+        <Col xs={12}>
+          <Field name='title' component={TextField} hintText='Title' fullWidth={true} />
+        </Col>
+        <Col xs={12}>
+          <Field name='description' component={TextField} hintText='Description' fullWidth={true} />
+        </Col>
+        <Col xs={12}>
+          <Field name='location' component={TextField} hintText='Location' fullWidth={true} />
+        </Col>
+      </Row>
+      <Row style={{ marginBottom: '15px' }}>
+        <Col xs={6}>
+          <Field name='startDate' component={DatePicker} defaultValue={null} hintText='Start Date' />
+        </Col>
+        <Col xs={6}>
+          <Field name='endDate' component={DatePicker} defaultValue={null} hintText='End Date' />
+        </Col>
+      </Row>
+      <Row style={{ marginBottom: '15px' }}>
+        <Col xs={12}>
+          <Row>
+            {_renderTargetInputs(numTargets)}
+            <Col xs={12}>
+              <RaisedButton label='Add Target' onClick={addTargetInput}/>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <RaisedButton type='submit' label='Create Campaign' primary={true} fullWidth={true} />
+        </Col>
+      </Row>
+    </Col>
   </form>
 )
 

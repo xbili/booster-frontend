@@ -5,7 +5,8 @@
 }
 
 .navbar__logo,
-.navbar__title {
+.navbar__title,
+.navbar__right-button {
   color: white;
   min-height: 80px;
   display: flex;
@@ -33,5 +34,30 @@
 .navbar__title {
   background-color: $color-dark-blue;
   padding-left: 30px;
+}
+
+.navbar__right-button {
+  background-color: $color-dark-blue;
+  transition: background-color 0.25s ease-in-out;
+  a {
+    justify-content: center;
+    text-align: center;
+    display: block;
+    width: 100%;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+    font-size: 3em;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.25s ease-in-out, transform 0.5s ease-in-out;
+  }
+  &:hover {
+    background-color: $color-red;
+    a {
+      transform: scale(1.25, 1.25);
+    }
+  }
 }
 

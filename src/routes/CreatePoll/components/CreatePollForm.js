@@ -46,7 +46,7 @@ export const CreatePollForm = ({
   numChoices
 }) => (
   <form onSubmit={handleSubmit}>
-    <Col xs={12}>
+    <Col xs={12} style={{ paddingTop: '15px' }}>
       <Row style={{ marginBottom: '15px' }}>
         <Col xs={12}><Field name='title' component={TextField} hintText='Title' /></Col>
       </Row>

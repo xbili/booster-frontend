@@ -35,6 +35,7 @@ export class PollsView extends Component {
         <DashboardLayout
           title='Active Polls'
           business={business}
+          rightButton={`/business/${business.id}/poll`}
         >
           <Row style={{
             paddingTop: '30px',
