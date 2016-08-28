@@ -34,7 +34,7 @@ const createPoll = (businessId, {
       end_date: endDate,
       choices
     }
-    req(`/businesses/${businessId}/polls`, 'POST', { data }, hashToken)
+    req(`/polls`, 'POST', { data }, hashToken)
       .then(res => {
         dispatch(createPollSuccess(res.data.poll))
       })

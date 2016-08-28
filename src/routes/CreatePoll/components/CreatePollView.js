@@ -12,6 +12,10 @@ import DashboardLayout from '../../../layouts/DashboardLayout/DashboardLayout'
 import CreatePollFormContainer from '../containers/CreatePollFormContainer'
 
 export class CreatePollView extends Component {
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
+
   componentDidMount() {
     const { getBusiness } = this.props.actions
     const { businessId } = this.props.params
@@ -63,9 +67,8 @@ export class CreatePollView extends Component {
       choices
     }
 
-    console.log(createPollParams);
-
     createPoll(businessId, createPollParams)
+    this.context.router.push(`/business/${businessId}/polls`)
   }
 }
 
