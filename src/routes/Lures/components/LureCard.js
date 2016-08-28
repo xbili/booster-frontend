@@ -1,16 +1,17 @@
 import React from 'react'
 import {
-  Card,
-  CardHeader,
-  CardActions,
-  CardMedia,
-  CardTitle,
-  CardText
-} from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
-import LinearProgress from 'material-ui/LinearProgress'
+  Paper,
+  CircularProgress
+} from 'material-ui'
+import {
+  Grid,
+  Row,
+  Col
+} from 'react-bootstrap'
 import { Link } from 'react-router'
+import moment from 'moment'
+
+import './LureCard.scss'
 
 const _getLureDate = lure => (
   `${moment(lure.start_date).format('MMMM Do YYYY')} to ${moment(lure.end_date).format('MMMM Do YYYY')}`
@@ -22,38 +23,69 @@ const _getTotalTargets = targets => (
     .reduce((prev, amount) => (prev + amount), 0)
 )
 
-export const LureCard = ({ business, lure }) => (
-  <Card style={{ minHeight: '60vh' }}>
-    <CardMedia
-      style={{
-        alignItems: 'center'
-      }}
-      overlay={<CardTitle title={lure.title} subtitle={lure.location} />}
-    >
-      <img
-        style={{
-          objectFit: 'cover',
-          height: '200px'
-        }}
-        src={lure.image_url}
-      />
-    </CardMedia>
-    <CardText>
-      {lure.description}
-      <h3>Lure Progress</h3>
-      <LinearProgress
-        mode='determinate'
-        min={0}
-        max={_getTotalTargets(lure.targets)}
-        value={lure.transactions.length}
-      />
-      <span>{lure.transactions.length} / {lure.target}</span>
-    </CardText>
-    <CardActions>
-      <Link to={`/business/${business.id}/lure/${lure.id}`}><FlatButton label='View Lure' /></Link>
-      <Link to={`/business/${business.id}/lure/${lure.id}`}><RaisedButton label='Delete Lure' /></Link>
-    </CardActions>
-  </Card>
+const _getTotalPurchased = transactions => (
+  transactions
+    .map(transaction => transaction.amount)
+    .reduce((prev, amount) => (prev + amount), 0)
 )
+
+const _getPercentProgress = lure => {
+  const start = moment(lure.start_date)
+  const end = moment(lure.end_date)
+  const current = moment(new Date())
+  const percent = current.diff(start) / end.diff(start) * 100
+  return percent > 100 ? 100 : percent
+}
+
+const _renderTargets = (totalPurchased, targets) => (
+  targets
+    .map((target, i) => (
+      <div className={target.amount <= totalPurchased ? "passedTarget" : "target"} key={i}>
+        {target.amount}
+      </div>
+    )
+  )
+)
+
+export const LureCard = ({ business, lure }) => {
+  const totalPurchased = _getTotalPurchased(lure.transactions)
+  const percentProgress = _getPercentProgress(lure)
+  return (
+    <Paper style={{borderRadius: '5px', marginBottom: '36px'}}>
+      <Row>
+        <Col xs={12}>
+          <div className="cardTitle">{lure.title}</div>
+          <Row className="cardContent">
+            <Col xs={5}>
+              <div className="leftContent">
+                <div className="leftNumbers">
+                  <div className="totalPurchased">
+                    {totalPurchased}
+                  </div>
+                  <div className="targets">
+                    {_renderTargets(totalPurchased, lure.targets)}
+                  </div>
+                </div>
+                <div className="purchasedLabel">purchased</div>
+              </div>
+            </Col>
+            <Col xs={2} xsOffset={5}>
+              <div className="rightContent">
+                <div className={percentProgress >= 100 ? 'passedTimeToDate' : 'timeToDate'}>
+                  {moment(lure.end_date).toNow(true)}
+                </div>
+                <CircularProgress
+                  mode="determinate"
+                  value={percentProgress}
+                  color={percentProgress >= 100 ? '#FF4A5D' : '#1BBC9B'}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Paper>
+  )
+}
 
 export default LureCard

@@ -1,0 +1,75 @@
+@import '../../../styles/_base.scss';
+
+.cardTitle {
+  align-items: center;
+  background-color: $color-dark-blue;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+  display: flex;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 36px;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+.cardContent {
+  padding: 10px;
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+.leftContent {
+  margin-left: 16px;
+}
+
+.rightContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+
+.leftNumbers {
+  display: flex;
+  align-items: center;
+}
+
+.totalPurchased {
+  color: $color-dark-blue;
+  display: inline-block;
+  font-size: 5em;
+  font-weight: bold;
+}
+
+.targets {
+  display: inline-block;
+  margin-left: 16px;
+}
+
+.passedTarget {
+  color: $color-green;
+}
+
+.target {
+  color: $color-grey-light;
+}
+
+.purchasedLabel {
+  color: $color-grey-light;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  margin-left: 2px;
+}
+
+.timeToDate {
+  color: $color-green;
+}
+
+.passedTimeToDate {
+  color: $color-red;
+}

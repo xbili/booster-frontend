@@ -22,16 +22,11 @@ export class LuresView extends Component {
   render() {
     const { lures, business } = this.props;
     const lureCards = lures.map(lure => (
-      <Col
-        style={{ marginBottom: '15px' }}
-        xs={12}
+      <LureCard
+        business={business}
+        lure={lure}
         key={uuid.v4()}
-      >
-        <LureCard
-          business={business}
-          lure={lure}
-        />
-      </Col>
+      />
     ))
 
     return (
@@ -45,7 +40,12 @@ export class LuresView extends Component {
             paddingTop: '30px',
             paddingBottom: '30px'
           }}>
-            {lureCards}
+            <Col
+              style={{ marginBottom: '80px', marginTop: '32px', marginLeft: '48px' }}
+              xs={6}
+            >
+              {lureCards}
+            </Col>
           </Row>
         </DashboardLayout>
       </LoginRedirect>
@@ -54,4 +54,3 @@ export class LuresView extends Component {
 }
 
 export default LuresView
-
